@@ -18,28 +18,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button clothing = findViewById(R.id.clothing);
         Button shelter = findViewById(R.id.shelter);
         Button healthcare = findViewById(R.id.healthcare);
+        Button submit = findViewById(R.id.submit);
 
-        food.setOnClickListener(this);
-        clothing.setOnClickListener(this);
-        shelter.setOnClickListener(this);
-        healthcare.setOnClickListener(this);
+        food.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // set the color to relative layout
+                food.setSelected(!food.isSelected());
+            }
+        });
+
+        clothing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // set the color to relative layout
+                clothing.setSelected(!clothing.isSelected());
+            }
+        });
+
+        shelter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // set the color to relative layout
+                shelter.setSelected(!shelter.isSelected());
+            }
+        });
+
+        healthcare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                healthcare.setSelected(!healthcare.isSelected());
+                // set the color to relative layout
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.food:
-                Toast.makeText(this, "food selected.", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.clothing:
-                Toast.makeText(this, "clothing selected.", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.shelter:
-                Toast.makeText(this, "shelter selected.", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.healthcare:
-                Toast.makeText(this, "healthcare selected.", Toast.LENGTH_SHORT).show();
-                break;
-        }
+
     }
 }

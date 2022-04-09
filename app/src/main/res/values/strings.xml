@@ -9,7 +9,7 @@
     <string name="clothing">clothing</string>
     <string name="shelter">shelter</string>
     <string name="health">health</string>
-    <string name="please_select_the_aid_you_are_needing">Please select the aid you are needing.</string>
+    <string name="please">Please select the aid you are needing.</string>
     <string name="submit">submit</string>
     <string name="back">back?</string>
 </resources>

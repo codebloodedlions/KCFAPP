@@ -3,12 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/drawable/button_text_color.xml" value="0.1" />
         <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/drawable/gradient_background.xml" value="0.1105" />
+        <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.16" />
         <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/drawable/navbutton_background.xml" value="0.125" />
+        <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/drawable/navi.xml" value="0.1" />
+        <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/drawable/selectable.xml" value="0.1" />
+        <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/drawable/selector.xml" value="0.1" />
         <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/drawable/submit_background.xml" value="0.168" />
         <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/layout/activity_main.xml" value="0.12355707567336469" />
-        <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/layout/activity_need.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/layout/activity_need.xml" value="0.1" />
         <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/layout/activity_refugee.xml" value="0.12350427350427351" />
         <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/layout/fragment_dashboard.xml" value="0.144017094017094" />
         <entry key="..\:/Users/omo/AndroidStudioProjects/KCFAPP/app/src/main/res/layout/fragment_home.xml" value="0.18507281553398058" />

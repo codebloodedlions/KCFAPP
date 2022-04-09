@@ -8,122 +8,96 @@
     android:background="@drawable/gradient_background"
     android:paddingTop="?attr/actionBarSize">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_fragment_activity_need"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/nav_view"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:navGraph="@navigation/mobile_navigation2" />
-
     <TextView
         android:id="@+id/blurb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/please_select_the_aid_you_are_needing"
+        android:text="@string/please"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="28sp"
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@id/food"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/food"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:drawableLeft="@drawable/ic_baseline_food_bank_24"
-        android:text="@string/food"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:backgroundTint="#0460D9"
-        app:layout_constraintBottom_toTopOf="@id/clothing"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/white" />
-
-    <Button
-        android:id="@+id/clothing"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:drawableLeft="@drawable/ic_baseline_person_24"
-        android:text="@string/clothing"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/shelter"
-        app:layout_constraintTop_toBottomOf="@id/food"
-        app:strokeColor="@color/white"
-        app:backgroundTint="#0460D9"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="230dp" />
+        />
 
     <Button
         android:id="@+id/shelter"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:drawableLeft="@drawable/ic_baseline_night_shelter_24"
         android:text="@string/shelter"
+        android:textColor="@drawable/button_text_color"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="20sp"
+        app:backgroundTint="@color/button_background_color"
         app:layout_constraintTop_toBottomOf="@id/clothing"
         app:strokeColor="@color/white"
-        app:backgroundTint="#0460D9"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="324dp" />
+        tools:layout_editor_absoluteX="-27dp" />
 
     <Button
-        android:id="@+id/healthcare"
+        android:id="@+id/food"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:drawableLeft="@drawable/ic_baseline_local_hospital_24"
-        android:text="@string/health"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_baseline_food_bank_24"
+        android:text="@string/food"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@id/shelter"
+        android:textColor="@drawable/button_text_color"
+        android:textSize="20sp"
+        app:backgroundTint="@color/button_background_color"
         app:strokeColor="@color/white"
-        app:backgroundTint="#0460D9"
+        app:layout_constraintTop_toBottomOf="@id/blurb"
+        app:layout_constraintBottom_toTopOf="@id/clothing"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="324dp" />
+        tools:layout_editor_absoluteY="166dp" />
+
+    <Button
+        android:id="@+id/clothing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:text="@string/clothing"
+        android:textAlignment="center"
+        android:textColor="@drawable/button_text_color"
+        android:textSize="20sp"
+        app:backgroundTint="@color/button_background_color"
+        app:layout_constraintBottom_toTopOf="@id/shelter"
+        app:layout_constraintTop_toBottomOf="@id/food"
+        app:strokeColor="@color/white"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/submit"
         android:layout_width="256dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="28dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="44dp"
         android:background="@drawable/navi"
         android:text="@string/submit"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:backgroundTint="#0460D9"
+        android:textColor="@drawable/button_text_color"
+        android:textSize="20sp"
+        app:backgroundTint="@color/button_background_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/healthcare" />
+
+    <Button
+        android:id="@+id/healthcare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@drawable/ic_baseline_local_hospital_24"
+        android:text="@string/health"
+        android:textAlignment="center"
+        android:textColor="@drawable/button_text_color"
+        android:textSize="20sp"
+        app:backgroundTint="@color/button_background_color"
+        app:layout_constraintTop_toBottomOf="@id/shelter"
+        app:strokeColor="@color/white"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
