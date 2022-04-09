@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">KCFAPP</string>
+    <string-array name="classification">
+        <item>Public</item>
+        <item>Private</item>
+    </string-array>
 </resources>
