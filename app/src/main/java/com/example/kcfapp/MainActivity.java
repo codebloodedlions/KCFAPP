@@ -1,5 +1,5 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++
-// Name: db_helper.java
+// Name: MainActivity.java
 // Function: Main Activity
 // Programmer: Deonna Owens
 // Last Updated: 04/06/2022
