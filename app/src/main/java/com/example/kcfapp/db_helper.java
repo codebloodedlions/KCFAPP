@@ -19,7 +19,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class db_helper extends SQLiteOpenHelper {
     private static final boolean ENABLE_DEBUG = false;
@@ -44,27 +46,40 @@ public class db_helper extends SQLiteOpenHelper {
     // on below line we are creating a variable for
     // our sqlite database and calling writable method
     // as we are writing data in our database.
-    SQLiteDatabase db = this.getWritableDatabase();
+    // SQLiteDatabase db = this.getWritableDatabase();
 
 
     // creating a constructor for our database handler.
     public db_helper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         if(KILL_DB){
+            SQLiteDatabase db = this.getWritableDatabase();
             System.out.println(TABLE_NAME + " Cleared!!!");
+
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+
+            String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
+                    + NAME_COL + " TEXT,"
+                    + ADDRESS_COL + " TEXT,"
+                    + FOOD + " INTEGER,"
+                    + CLOTHING + " INTEGER,"
+                    + SHELTER + " INTEGER,"
+                    + HEALTHCARE + " INTEGER)";
+            db.execSQL(query);
+
+            db.close();
         }
-        if(ENABLE_DEBUG) viewLocationTable(db, TABLE_NAME);
+        if(ENABLE_DEBUG) {
+            SQLiteDatabase db = this.getWritableDatabase();
+            viewLocationTable(db, TABLE_NAME);
+            db.close();
+        }
 
     }
 
     // below method is for creating a database by running a sqlite query
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // on below line we are creating
-        // an sqlite query and we are
-        // setting our column names
-        // along with their data types.
         String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
                 + NAME_COL + " TEXT,"
                 + ADDRESS_COL + " TEXT,"
@@ -81,6 +96,8 @@ public class db_helper extends SQLiteOpenHelper {
     // this method is use to add new location to our sqlite database.
     // food, clothing, shelter, healthcare takes 0 (false) or 1 (true)
     public void addNewLocation(String locName, String locAddress, int prov_food, int prov_clothing, int prov_shelter, int prov_healthcare) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
         // on below line we are creating a
         // variable for content values.
         ContentValues values = new ContentValues();
@@ -118,29 +135,53 @@ public class db_helper extends SQLiteOpenHelper {
         return tableStr;
     }
 
-    @SuppressLint("Range")
-    public String cursorToString(Cursor cursor){
-        String cursorString = "";
-        if (cursor.moveToFirst()){
-            String[] colNames = cursor.getColumnNames();
-            for(String name: colNames)
-                cursorString += String.format("%s ][ ", name);
-            cursorString += "\n";
-            do{
-                for (String name: colNames){
-                    cursorString += String.format("%s ][ ",
-                            cursor.getString(cursor.getColumnIndex(name)));
-                }
+        @SuppressLint("Range")
+        public String cursorToString(Cursor cursor){
+            String cursorString = "";
+            if (cursor.moveToFirst()){
+                String[] colNames = cursor.getColumnNames();
+                for(String name: colNames)
+                    cursorString += String.format("%s ][ ", name);
                 cursorString += "\n";
+                do{
+                    for (String name: colNames){
+                        cursorString += String.format("%s ][ ",
+                                cursor.getString(cursor.getColumnIndex(name)));
+                    }
+                    cursorString += "\n";
+                }
+                while(cursor.moveToNext());
             }
-            while(cursor.moveToNext());
+            return cursorString;
         }
-        return cursorString;
-    }
 
-//    public HashMap<Integer, String> getLocationInfo() {
-//
-//    }
+    public List<locationOBJ> getLocationData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // object for storing location data
+        List<locationOBJ> ld = new ArrayList<>();
+        Cursor csr = db.query(TABLE_NAME, null, null, null, null, null, null);
+
+        while (csr.moveToNext()){
+            @SuppressLint("Range")
+            locationOBJ temp = new locationOBJ(
+                    csr.getString(csr.getColumnIndex(NAME_COL)),
+                    csr.getString(csr.getColumnIndex(ADDRESS_COL)),
+                    csr.getInt(csr.getColumnIndex(FOOD)),
+                    csr.getInt(csr.getColumnIndex(CLOTHING)),
+                    csr.getInt(csr.getColumnIndex(SHELTER)),
+                    csr.getInt(csr.getColumnIndex(HEALTHCARE))
+            );
+
+            ld.add(temp);
+        }
+        csr.close();
+        db.close();
+
+        return ld;
+
+
+    }
 
     // for upgrading database
     @Override
