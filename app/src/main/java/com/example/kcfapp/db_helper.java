@@ -3,21 +3,24 @@
 // Function: app database functionality
 // Programmer: Charles Lett Jr.
 // Last Updated: 04/06/2022
-// Last Updated: 04/06/2022
 // Reference: https://www.geeksforgeeks.org/how-to-create-and-add-data-to-sqlite-database-in-android/
 //++++++++++++++++++++++++++++++++++++++++++++++++
 
 package com.example.kcfapp;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 public class db_helper extends SQLiteOpenHelper {
+    private static final boolean ENABLE_DEBUG = true;
 
     // creating a constant variables for our database.
     // below variable is for our database name.
@@ -84,11 +87,48 @@ public class db_helper extends SQLiteOpenHelper {
         // TODO: produces error regarding healthcare column
         db.insert(TABLE_NAME, null, values);
 
+        if(ENABLE_DEBUG) viewLocationTable(db, TABLE_NAME);
+
         // at last we are closing our
         // database after adding database.
         db.close();
     }
 
+    //
+    public void updateLocation(String locName, String locAddress, int prov_food, int prov_clothing, int prov_shelter, int prov_healthcare){
+
+    }
+
+    public String viewLocationTable(SQLiteDatabase db, String tableName){
+        Log.d("","*****ViewLocationTable started*****");
+        String tableStr = String.format("Table %s:\n", tableName);
+        Cursor allRows = db.rawQuery("SELECT * FROM " + tableName, null);
+        tableStr += cursorToString(allRows);
+        System.out.println("[DB INFO]" + tableStr);
+        return tableStr;
+    }
+
+    @SuppressLint("Range")
+    public String cursorToString(Cursor cursor){
+        String cursorString = "";
+        if (cursor.moveToFirst()){
+            String[] colNames = cursor.getColumnNames();
+            for(String name: colNames)
+                cursorString += String.format("%s ][ ", name);
+            cursorString += "\n";
+            do{
+                for (String name: colNames){
+                    cursorString += String.format("%s ][ ",
+                            cursor.getString(cursor.getColumnIndex(name)));
+                }
+                cursorString += "\n";
+            }
+            while(cursor.moveToNext());
+        }
+        return cursorString;
+    }
+
+    // for upgrading database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // this method is called to check if the table exists already.
