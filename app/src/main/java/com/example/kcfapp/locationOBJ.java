@@ -2,7 +2,7 @@
 // Name: locationOBJ.java
 // Function: used to store info from db table
 // Programmer: Charles Lett Jr.
-// Last Updated: 04/06/2022
+// Last Updated: 04/10/2022
 // reference: https://stackoverflow.com/a/45425764
 //++++++++++++++++++++++++++++++++++++++++++++++++
 
