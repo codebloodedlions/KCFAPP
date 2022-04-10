@@ -1,3 +1,12 @@
+//++++++++++++++++++++++++++++++++++++++++++++++++
+// Name: db_helper.java
+// Function: app database functionality
+// Programmer: Charles Lett Jr.
+// Last Updated: 04/06/2022
+// Last Updated: 04/06/2022
+// Reference: https://www.geeksforgeeks.org/how-to-create-and-add-data-to-sqlite-database-in-android/
+//++++++++++++++++++++++++++++++++++++++++++++++++
+
 package com.example.kcfapp;
 
 import android.content.ContentValues;
@@ -12,8 +21,8 @@ public class db_helper extends SQLiteOpenHelper {
 
     // creating a constant variables for our database.
     // below variable is for our database name.
-    private static final String DB_NAME = "location_db";
-    private static final int DB_VERSION = 1;
+    private static final String DB_NAME = "location.db";
+    private static final int DB_VERSION = 2;
     private static final String TABLE_NAME = "locations";
     private static final String ID_COL = "id";
     private static final String NAME_COL = "name";
@@ -35,14 +44,13 @@ public class db_helper extends SQLiteOpenHelper {
         // an sqlite query and we are
         // setting our column names
         // along with their data types.
-        String query = "CREATE TABLE " + TABLE_NAME + " ("
-                + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+        String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
                 + NAME_COL + " TEXT,"
                 + ADDRESS_COL + " TEXT,"
                 + FOOD + " INTEGER,"
                 + CLOTHING + " INTEGER,"
-                + SHELTER + "INTEGER,"
-                + HEALTHCARE + "INTEGER)";
+                + SHELTER + " INTEGER,"
+                + HEALTHCARE + " INTEGER)";
 
         // at last we are calling a exec sql
         // method to execute above sql query
@@ -51,7 +59,7 @@ public class db_helper extends SQLiteOpenHelper {
 
     // this method is use to add new location to our sqlite database.
     // food, clothing, shelter, healthcare takes 0 (false) or 1 (true)
-    public void addNewLocation(String locName, String locAddress, int food, int clothing, int shelter, int healthcare) {
+    public void addNewLocation(String locName, String locAddress, int prov_food, int prov_clothing, int prov_shelter, int prov_healthcare) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -66,10 +74,10 @@ public class db_helper extends SQLiteOpenHelper {
         // along with its key and value pair.
         values.put(NAME_COL, locName);
         values.put(ADDRESS_COL, locAddress);
-        values.put(FOOD, food);
-        values.put(CLOTHING, clothing);
-        values.put(SHELTER, shelter);
-        values.put(HEALTHCARE, healthcare);
+        values.put(FOOD, prov_food);
+        values.put(CLOTHING, prov_clothing);
+        values.put(SHELTER, prov_shelter);
+        values.put(HEALTHCARE, prov_healthcare);
 
         // after adding all values we are passing
         // content values to our table.
