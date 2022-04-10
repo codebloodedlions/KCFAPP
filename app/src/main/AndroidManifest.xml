@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KCFAPP">
         <activity
+            android:name=".health"
+            android:exported="false" />
+        <activity
+            android:name=".shelter"
+            android:exported="false" />
+        <activity
+            android:name=".clothing"
+            android:exported="false" />
+        <activity
+            android:name=".food"
+            android:exported="false" />
+        <activity
+            android:name=".need"
+            android:exported="false" />
+        <activity
             android:name=".donor_page"
             android:exported="false" />
         <activity

@@ -3,8 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_donor_page.xml" value="0.20260416666666667" />
+        <entry key="app/src/main/res/drawable/button_background_color.xml" value="0.123" />
+        <entry key="app/src/main/res/drawable/button_text_color.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_food_bank_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/navi.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_clothing.xml" value="0.11277173913043478" />
+        <entry key="app/src/main/res/layout/activity_donor_page.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_food.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_health.xml" value="0.11277173913043478" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/layout/activity_need.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_shelter.xml" value="0.11277173913043478" />
       </map>
     </option>
   </component>
