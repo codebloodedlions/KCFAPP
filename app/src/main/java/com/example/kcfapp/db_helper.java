@@ -19,8 +19,14 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.HashMap;
+
 public class db_helper extends SQLiteOpenHelper {
-    private static final boolean ENABLE_DEBUG = true;
+    private static final boolean ENABLE_DEBUG = false;
+
+    // clears db; ALWAYS LEAVE TO FALSE UNLESS YOU INTEND TO DELETE THE LOCATION TABLE
+    // the table will be recreated next time a query is made
+    private static final boolean KILL_DB = false;
 
     // creating a constant variables for our database.
     // below variable is for our database name.
@@ -35,9 +41,21 @@ public class db_helper extends SQLiteOpenHelper {
     private static final String SHELTER = "shelter";
     private static final String HEALTHCARE = "healthcare";
 
+    // on below line we are creating a variable for
+    // our sqlite database and calling writable method
+    // as we are writing data in our database.
+    SQLiteDatabase db = this.getWritableDatabase();
+
+
     // creating a constructor for our database handler.
     public db_helper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        if(KILL_DB){
+            System.out.println(TABLE_NAME + " Cleared!!!");
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        }
+        if(ENABLE_DEBUG) viewLocationTable(db, TABLE_NAME);
+
     }
 
     // below method is for creating a database by running a sqlite query
@@ -63,12 +81,6 @@ public class db_helper extends SQLiteOpenHelper {
     // this method is use to add new location to our sqlite database.
     // food, clothing, shelter, healthcare takes 0 (false) or 1 (true)
     public void addNewLocation(String locName, String locAddress, int prov_food, int prov_clothing, int prov_shelter, int prov_healthcare) {
-
-        // on below line we are creating a variable for
-        // our sqlite database and calling writable method
-        // as we are writing data in our database.
-        SQLiteDatabase db = this.getWritableDatabase();
-
         // on below line we are creating a
         // variable for content values.
         ContentValues values = new ContentValues();
@@ -87,14 +99,12 @@ public class db_helper extends SQLiteOpenHelper {
         // TODO: produces error regarding healthcare column
         db.insert(TABLE_NAME, null, values);
 
-        if(ENABLE_DEBUG) viewLocationTable(db, TABLE_NAME);
-
         // at last we are closing our
         // database after adding database.
         db.close();
     }
 
-    //
+    // update location info; may leave alone
     public void updateLocation(String locName, String locAddress, int prov_food, int prov_clothing, int prov_shelter, int prov_healthcare){
 
     }
@@ -127,6 +137,10 @@ public class db_helper extends SQLiteOpenHelper {
         }
         return cursorString;
     }
+
+//    public HashMap<Integer, String> getLocationInfo() {
+//
+//    }
 
     // for upgrading database
     @Override
