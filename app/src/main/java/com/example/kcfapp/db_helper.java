@@ -2,7 +2,7 @@
 // Name: db_helper.java
 // Function: app database functionality
 // Programmer: Charles Lett Jr.
-// Last Updated: 04/06/2022
+// Last Updated: 04/10/2022
 // Reference: https://www.geeksforgeeks.org/how-to-create-and-add-data-to-sqlite-database-in-android/
 //++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -15,13 +15,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 
+import com.google.gson.Gson;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.io.File;
+import java.io.PrintWriter;
 
 public class db_helper extends SQLiteOpenHelper {
     private static final boolean ENABLE_DEBUG = false;
@@ -29,6 +32,9 @@ public class db_helper extends SQLiteOpenHelper {
     // clears db; ALWAYS LEAVE TO FALSE UNLESS YOU INTEND TO DELETE THE LOCATION TABLE
     // the table will be recreated next time a query is made
     private static final boolean KILL_DB = false;
+
+    // webserver info
+    private static final String URL = "http://codebloodedlu.com/scripts/updateDB.php";
 
     // creating a constant variables for our database.
     // below variable is for our database name.
@@ -42,12 +48,12 @@ public class db_helper extends SQLiteOpenHelper {
     private static final String CLOTHING = "clothing";
     private static final String SHELTER = "shelter";
     private static final String HEALTHCARE = "healthcare";
+    private static final String SYNC = "sync";
 
     // on below line we are creating a variable for
     // our sqlite database and calling writable method
     // as we are writing data in our database.
     // SQLiteDatabase db = this.getWritableDatabase();
-
 
     // creating a constructor for our database handler.
     public db_helper(@Nullable Context context) {
@@ -76,6 +82,24 @@ public class db_helper extends SQLiteOpenHelper {
         }
 
     }
+    
+    public void killDB(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println(TABLE_NAME + " Cleared!!!");
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+
+        String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
+                + NAME_COL + " TEXT,"
+                + ADDRESS_COL + " TEXT,"
+                + FOOD + " INTEGER,"
+                + CLOTHING + " INTEGER,"
+                + SHELTER + " INTEGER,"
+                + HEALTHCARE + " INTEGER)";
+        db.execSQL(query);
+
+        db.close();
+    }
 
     // below method is for creating a database by running a sqlite query
     @Override
@@ -86,7 +110,8 @@ public class db_helper extends SQLiteOpenHelper {
                 + FOOD + " INTEGER,"
                 + CLOTHING + " INTEGER,"
                 + SHELTER + " INTEGER,"
-                + HEALTHCARE + " INTEGER)";
+                + HEALTHCARE + " INTEGER,"
+                + SYNC + "INTEGER)";
 
         // at last we are calling a exec sql
         // method to execute above sql query
@@ -134,7 +159,6 @@ public class db_helper extends SQLiteOpenHelper {
         System.out.println("[DB INFO]" + tableStr);
         return tableStr;
     }
-
         @SuppressLint("Range")
         public String cursorToString(Cursor cursor){
             String cursorString = "";
@@ -182,6 +206,25 @@ public class db_helper extends SQLiteOpenHelper {
 
 
     }
+
+
+    public void writeJSON() throws FileNotFoundException {
+        @SuppressLint("SdCardPath") String path = "/data/data/com.example.kcfapp/";
+        Gson gs = new Gson();
+        locationOBJ data;
+
+        File file = new File(path + "locations.json");
+        PrintWriter writer = new PrintWriter(new FileOutputStream(file));
+
+        for(int i=0; i < getLocationData().size(); i++){
+            data = getLocationData().get(i);
+            writer.write(gs.toJson(data) + "\n");
+        }
+
+        writer.close();
+
+    }
+
 
     // for upgrading database
     @Override
