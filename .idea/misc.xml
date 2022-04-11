@@ -5,15 +5,18 @@
       <map>
         <entry key="app/src/main/res/drawable/button_background_color.xml" value="0.123" />
         <entry key="app/src/main/res/drawable/button_text_color.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/circle.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/circlet.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_food_bank_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/navi.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/wave.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_clothing.xml" value="0.11277173913043478" />
         <entry key="app/src/main/res/layout/activity_donor_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_food.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_health.xml" value="0.11277173913043478" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21666666666666667" />
-        <entry key="app/src/main/res/layout/activity_need.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24723247232472326" />
+        <entry key="app/src/main/res/layout/activity_need.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_shelter.xml" value="0.11277173913043478" />
         <entry key="app/src/main/res/layout/single_item.xml" value="0.335" />
       </map>
@@ -21,4 +24,11 @@
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.21666666666666667" />
+      </ProjectState>
+    </option>
+  </component>
 </project>

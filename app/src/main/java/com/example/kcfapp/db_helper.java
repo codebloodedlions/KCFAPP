@@ -83,6 +83,24 @@ public class db_helper extends SQLiteOpenHelper {
 
     }
 
+    public void killDB(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println(TABLE_NAME + " Cleared!!!");
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+
+        String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
+                + NAME_COL + " TEXT,"
+                + ADDRESS_COL + " TEXT,"
+                + FOOD + " INTEGER,"
+                + CLOTHING + " INTEGER,"
+                + SHELTER + " INTEGER,"
+                + HEALTHCARE + " INTEGER)";
+        db.execSQL(query);
+
+        db.close();
+    }
+
     // below method is for creating a database by running a sqlite query
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -215,4 +233,5 @@ public class db_helper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
+
 }

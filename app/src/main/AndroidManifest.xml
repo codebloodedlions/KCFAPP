@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KCFAPP">
         <activity
-            android:name=".food"
-            android:exported="false" />
-        <activity
             android:name=".need"
             android:exported="false" />
         <activity

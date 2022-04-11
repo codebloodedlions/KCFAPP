@@ -1,89 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
-    android:paddingTop="?attr/actionBarSize">
+    tools:context=".need">
 
-    <TextView
-        android:id="@+id/blurb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/please"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@id/food"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <Button
-        android:id="@+id/shelter"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawableLeft="@drawable/ic_baseline_night_shelter_24"
-        android:text="@string/shelter"
-        android:textColor="@drawable/button_text_color"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:backgroundTint="@color/button_background_color"
-        app:layout_constraintTop_toBottomOf="@id/clothing"
-        app:strokeColor="@color/white"
-        tools:layout_editor_absoluteX="-27dp" />
-
-    <Button
-        android:id="@+id/food"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_baseline_food_bank_24"
-        android:text="@string/food"
-        android:textAlignment="center"
-        android:textColor="@drawable/button_text_color"
-        android:textSize="20sp"
-        app:backgroundTint="@color/button_background_color"
-        app:strokeColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/blurb"
-        app:layout_constraintBottom_toTopOf="@id/clothing"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="166dp" />
-
-    <Button
-        android:id="@+id/clothing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_baseline_person_24"
-        android:text="@string/clothing"
-        android:textAlignment="center"
-        android:textColor="@drawable/button_text_color"
-        android:textSize="20sp"
-        app:backgroundTint="@color/button_background_color"
-        app:layout_constraintBottom_toTopOf="@id/shelter"
-        app:layout_constraintTop_toBottomOf="@id/food"
-        app:strokeColor="@color/white"
-        tools:layout_editor_absoluteX="0dp" />
-
-
-    <Button
-        android:id="@+id/healthcare"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:drawableLeft="@drawable/ic_baseline_local_hospital_24"
-        android:text="@string/health"
-        android:textAlignment="center"
-        android:textColor="@drawable/button_text_color"
-        android:textSize="20sp"
-        app:backgroundTint="@color/button_background_color"
-        app:layout_constraintTop_toBottomOf="@id/shelter"
-        app:strokeColor="@color/white"
-        tools:layout_editor_absoluteX="0dp" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:background="@color/lightBlue"
+        android:id="@+id/rvPrograms"/>
+</LinearLayout>
