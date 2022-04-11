@@ -31,6 +31,7 @@ public class need extends AppCompatActivity implements View.OnClickListener {
                 // set the color to relative layout
                 food.setSelected(!food.isSelected());
                 startActivity(new Intent(need.this, food.class));
+
             }
         });
 
@@ -39,7 +40,7 @@ public class need extends AppCompatActivity implements View.OnClickListener {
             public void onClick(View view) {
                 // set the color to relative layout
                 clothing.setSelected(!clothing.isSelected());
-                startActivity(new Intent(need.this, clothing.class));
+
             }
         });
 
@@ -48,7 +49,7 @@ public class need extends AppCompatActivity implements View.OnClickListener {
             public void onClick(View view) {
                 // set the color to relative layout
                 shelter.setSelected(!shelter.isSelected());
-                startActivity(new Intent(need.this, shelter.class));
+
             }
         });
 
@@ -57,7 +58,6 @@ public class need extends AppCompatActivity implements View.OnClickListener {
             public void onClick(View view) {
                 // set the color to relative layout
                 healthcare.setSelected(!healthcare.isSelected());
-                startActivity(new Intent(need.this, health.class));
 
             }
         });

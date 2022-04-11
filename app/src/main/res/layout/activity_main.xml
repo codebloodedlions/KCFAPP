@@ -11,17 +11,17 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/refugeeBtn"
-        android:layout_width="140dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#0460D9"
         android:text="REFUGEE"
         app:icon="@drawable/ic_baseline_person_outline_24" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/donorBtn"
-        android:layout_width="140dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/refugeeBtn"
         android:layout_centerHorizontal="true"
@@ -32,5 +32,18 @@
         android:backgroundTint="#0460D9"
         android:text="DONOR"
         app:icon="@drawable/ic_baseline_person_outline_24" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="205dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Welcome"
+        android:textColor="@color/white"
+        android:textSize="46dp" />
 
 </RelativeLayout>

@@ -14,14 +14,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+
 public class donor_page extends AppCompatActivity {
 
     Button submitBtn;
     db_helper donorDB;
+
     EditText nameEditText, addressEditText;
     CheckBox foodCheckBox,clothingCheckBox, shelterCheckBox, healthCheckBox;
     int food, clothing, shelter, health;
     TextView nameTextView, serviceTextView, addressTextView;
+    locationOBJ obj;
+    String address;
+    String name;
 
 
     @Override
@@ -87,25 +93,30 @@ public class donor_page extends AppCompatActivity {
                     health = 0;
                 }
 
-
-
-                String address = addressEditText.getText().toString();
-                String name = nameEditText.getText().toString();
-                donorDB.addNewLocation(name, address, food, clothing, shelter, health);
+                address = addressEditText.getText().toString();
+                name = nameEditText.getText().toString();
 
                 boolean check = validateInfo(name, address, food, clothing, shelter, health);
+
                 if(check == true) {
                     Toast.makeText(donor_page.this, "Successfully Registered", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(donor_page.this, MainActivity.class));
+                    donorDB.addNewLocation(name, address, food, clothing, shelter, health);
                 }
                 else {
                     Toast.makeText(donor_page.this, "Sorry! Could not register. Please check information again", Toast.LENGTH_LONG).show();
                 }
 
-
+                try {
+                    donorDB.writeJSON();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
+
+
 
     private boolean validateInfo(String name, String address, int food, int clothing, int shelter, int health) {
          if(name.isEmpty()) {

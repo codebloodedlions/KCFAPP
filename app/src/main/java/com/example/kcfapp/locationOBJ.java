@@ -30,22 +30,30 @@ public class locationOBJ {
     }
 
     public String getAddress(){
+
         return this.address;
     }
 
-    public int getProvFood(){
-        return this.provFood;
-    }
+    public String setService() {
+        if(provFood == 1) {
+            return "Food";
+        }
+        else if(provClothes == 1) {
+            return "Clothing";
+        }
+        else if(provShelter == 1) {
+            return "Shelter";
+        }
+        else if(provHealthCare == 1) {
+            return "Healthcare";
+        }
 
-    public int getProvClothes(){
-        return this.provClothes;
-    }
+        else {
+            return "Information unavailable";
+        }
 
-    public int getProvShelter(){
-        return this.provShelter;
     }
-
-    public int getProvHealthcare(){
-        return this.provHealthCare;
+    public String getService() {
+        return setService();
     }
 }
